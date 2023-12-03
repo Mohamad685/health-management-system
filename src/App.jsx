@@ -1,6 +1,7 @@
-// Import necessary libraries
+// App.js or index.js
+
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-// import react from '@vitejs/plugin-react';
 import Admin from '../src/FrontEnd/Admin/Admin';
 import Doctors from '../src/FrontEnd/Doctors/Doctors';
 import Patients from '../src/FrontEnd/Patients/Patients';
@@ -13,9 +14,13 @@ const App = () => {
         {/* Route to the Login page */}
         <Route path="/login" element={<Login />} />
 
-        {/* Routes for user-specific pages */}
-        <Route path="/admin" element={<Admin />} />
+        {/* Route to the Admin page */}
+        <Route path="/admin/*" element={<Admin />} />
+
+        {/* Route to the Doctors page */}
         <Route path="/doctors" element={<Doctors />} />
+
+        {/* Route to the Patients page */}
         <Route path="/patients" element={<Patients />} />
 
         {/* Default route, Navigate to login page if the path is not matched */}
