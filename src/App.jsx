@@ -3,9 +3,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Admin from '../src/FrontEnd/Admin/Admin';
-import Doctors from '../src/FrontEnd/Doctors/Doctors';
-import Patients from '../src/FrontEnd/Patients/Patients';
+import DoctorDashboard from '../src/FrontEnd/Doctors/Doctors';
+import PatientDashboard from '../src/FrontEnd/Patients/Patients';
 import Login from '../src/FrontEnd/LoginPage/Login';
+import './index.css';
 
 const App = () => {
   return (
@@ -18,10 +19,10 @@ const App = () => {
         <Route path="/admin/*" element={<Admin />} />
 
         {/* Route to the Doctors page */}
-        <Route path="/doctors" element={<Doctors />} />
+        <Route path="/doctors" element={<DoctorDashboard />} />
 
         {/* Route to the Patients page */}
-        <Route path="/patients" element={<Patients />} />
+        <Route path="/patients" element={<PatientDashboard />} />
 
         {/* Default route, Navigate to login page if the path is not matched */}
         <Route path="*" element={<Navigate to="/login" />} />

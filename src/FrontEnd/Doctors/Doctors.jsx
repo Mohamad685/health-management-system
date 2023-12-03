@@ -1,35 +1,63 @@
-// Doctor.js
-import React, { useState } from 'react';
+// src/DoctorDashboard.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Doctor = () => {
+const DoctorDashboard = () => {
   const [patientRecords, setPatientRecords] = useState([]);
-  const [prescriptions, setPrescriptions] = useState([]);
   const [appointments, setAppointments] = useState([]);
 
-  // Functions for viewing patient records, prescribing medications, and managing appointments
+  useEffect(() => {
+    // Fetch patient records and appointments when the component mounts
+    fetchPatientRecords();
+    fetchAppointments();
+  }, []);
+
+  const fetchPatientRecords = () => {
+    // Make an API call to fetch patient records
+    axios.get('/api/doctor/patient-records')
+      .then(response => {
+        setPatientRecords(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching patient records:', error);
+      });
+  };
+
+  const fetchAppointments = () => {
+    // Make an API call to fetch appointments
+    axios.get('/api/doctor/appointments')
+      .then(response => {
+        setAppointments(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching appointments:', error);
+      });
+  };
+
+  console.log('patientRecords:', patientRecords); // Add this line for debugging
 
   return (
     <div>
-      <header>
-        <h1>Welcome, Dr. [Doctor Name]</h1>
-      </header>
-      <main>
-        {/* Doctor-specific content goes here */}
-        <section id="viewPatientRecords">
-          {/* Render patient records */}
-        </section>
-        <section id="prescribeMedications">
-          {/* Render prescriptions and prescribe medications */}
-        </section>
-        <section id="manageAppointments">
-          {/* Render appointments and manage them on a calendar */}
-        </section>
-      </main>
-      <footer>
-        <p>&copy; 2023 Hospital Management System</p>
-      </footer>
+      <h1>Doctor Dashboard</h1>
+
+      {/* Patient Records */}
+      <h2>Patient Records</h2>
+      <ul>
+        {Array.isArray(patientRecords) && patientRecords.length > 0 ? (
+          patientRecords.map(patient => (
+            <li key={patient.id}>
+              {patient.name} - {patient.condition}
+              <button onClick={() => assignPatient(patient.id)}>Assign</button>
+            </li>
+          ))
+        ) : (
+          <p>No patient records available</p>
+        )}
+      </ul>
+
+      {/* Rest of the component... */}
     </div>
   );
 };
 
-export default Doctor;
+export default DoctorDashboard;
