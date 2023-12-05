@@ -1,7 +1,7 @@
 // src/PatientDashboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "./Patient.css";
 const PatientDashboard = () => {
 	const [medicalHistory, setMedicalHistory] = useState([]);
 	const [upcomingAppointments, setUpcomingAppointments] = useState([]);
@@ -95,7 +95,7 @@ const fetchAvailableAppointments = () => {
 
 			{/* Medical History */}
 			<h2>Medical History</h2>
-			<ul>
+			<ul className="medical-history-list">
 				{Array.isArray(medicalHistory) && medicalHistory.length > 0 ? (
 					medicalHistory.map((record) => (
 						<li key={record.id}>
@@ -109,7 +109,7 @@ const fetchAvailableAppointments = () => {
 
 			{/* Upcoming Appointments */}
 			<h2>Upcoming Appointments</h2>
-			<ul>
+			<ul className="upcoming-appointments-list">
 				{upcomingAppointments.map((appointment) => (
 					<li key={appointment.id}>
 						{appointment.doctorName} - {appointment.date}
@@ -122,7 +122,7 @@ const fetchAvailableAppointments = () => {
 
 			{/* Available Appointments for Booking */}
 			<h2>Available Appointments</h2>
-			<ul>
+			<ul className="available-appointments-list">
 				{availableAppointments.map((appointment) => (
 					<li key={appointment.id}>
 						{appointment.doctorName} - {appointment.date}

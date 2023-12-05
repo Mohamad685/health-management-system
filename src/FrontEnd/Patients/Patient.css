@@ -1,0 +1,55 @@
+/* PatientDashboard.css */
+
+/* Container styles */
+.patient-dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Heading styles */
+  h1, h2 {
+    color: #333;
+  }
+  
+  /* List styles */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Medical History item styles */
+  ul.medical-history-list li {
+    margin-bottom: 10px;
+  }
+  
+  /* Upcoming Appointments item styles */
+  ul.upcoming-appointments-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Available Appointments item styles */
+  ul.available-appointments-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Button styles */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Error message styles */
+  .error-message {
+    color: #ff0000;
+    margin-top: 10px;
+  }
+  
