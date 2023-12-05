@@ -5,12 +5,14 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const navigate = useNavigate(); // Get the navigate function from React Router
 
   const handleLogin = async () => {
     try {
       // Make a request to the sign-in API
-      const response = await axios.post('/api/admin/signin', {
+      const response = await axios.post('http://localhost/hospital/apis/adminSignin.php', {
         username,
         password,
       });
@@ -19,8 +21,8 @@ const Login = () => {
         // Authentication successful, navigate to the admin page
         navigate('/admin');
       } else {
-        // Authentication failed, handle accordingly (e.g., show an error message)
-        console.error('Invalid username or password');
+        // Authentication failed,show an error message)
+        setErrorMessage('Wrong username or password');
       }
     } catch (error) {
       // Handle any error that occurs during the API request
@@ -57,6 +59,7 @@ const Login = () => {
           <button type="button" onClick={handleLogin}>
           Login
         </button>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </form>
       </main>
       <footer>
