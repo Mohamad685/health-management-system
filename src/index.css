@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  background-color: #4c53af;
+  background-color: #4c63af;
   color: white;
   padding: 1em;
   text-align: center;
@@ -16,11 +16,15 @@ main {
 }
 
 footer {
-  background-color: #4c53af;
+  background-color: #4c63af;
   color: white;
   text-align: center;
   padding: 1em;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+h1{
+  color: white;
 }

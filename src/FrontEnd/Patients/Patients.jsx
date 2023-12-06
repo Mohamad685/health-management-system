@@ -26,7 +26,6 @@ const PatientDashboard = () => {
 			});
 	};
 
-	// src/PatientDashboard.js
 	const fetchUpcomingAppointments = () => {
 		// Make an API call to fetch upcoming appointments
 		axios
@@ -64,8 +63,6 @@ const fetchAvailableAppointments = () => {
 
 
 	const bookAppointment = (appointmentId) => {
-		// Implement booking an appointment
-		// Make an API call to book the appointment
 		axios
 			.post("/api/patient/book-appointment", { appointmentId })
 			.then((response) => {
@@ -77,12 +74,10 @@ const fetchAvailableAppointments = () => {
 	};
 
 	const cancelAppointment = (appointmentId) => {
-		// Implement canceling an appointment
-		// Make an API call to cancel the appointment
+	
 		axios
 			.post("/api/patient/cancel-appointment", { appointmentId })
 			.then((response) => {
-				// Handle success, maybe update the state or show a success message
 			})
 			.catch((error) => {
 				console.error("Error canceling appointment:", error);
@@ -93,7 +88,7 @@ const fetchAvailableAppointments = () => {
 		<div>
 			<h1>Patient Dashboard</h1>
 
-			{/* Medical History */}
+
 			<h2>Medical History</h2>
 			<ul className="medical-history-list">
 				{Array.isArray(medicalHistory) && medicalHistory.length > 0 ? (
@@ -107,7 +102,6 @@ const fetchAvailableAppointments = () => {
 				)}
 			</ul>
 
-			{/* Upcoming Appointments */}
 			<h2>Upcoming Appointments</h2>
 			<ul className="upcoming-appointments-list">
 				{upcomingAppointments.map((appointment) => (
@@ -120,7 +114,6 @@ const fetchAvailableAppointments = () => {
 				))}
 			</ul>
 
-			{/* Available Appointments for Booking */}
 			<h2>Available Appointments</h2>
 			<ul className="available-appointments-list">
 				{availableAppointments.map((appointment) => (

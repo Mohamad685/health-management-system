@@ -1,4 +1,4 @@
-// src/DoctorDashboard.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -40,7 +40,7 @@ const DoctorDashboard = () => {
     <div>
       <h1>Doctor Dashboard</h1>
 
-      {/* Patient Records */}
+  
       <h2>Patient Records</h2>
       <ul>
         {Array.isArray(patientRecords) && patientRecords.length > 0 ? (
@@ -55,7 +55,7 @@ const DoctorDashboard = () => {
         )}
       </ul>
 
-      {/* Rest of the component... */}
+
     </div>
   );
 };

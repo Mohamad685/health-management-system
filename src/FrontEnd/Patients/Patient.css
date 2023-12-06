@@ -1,28 +1,49 @@
-/* PatientDashboard.css */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-/* Container styles */
+header {
+  background-color: #4c63af;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+main {
+  padding: 1em;
+}
+
+footer {
+  background-color: #4c63af;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
 .patient-dashboard-container {
     max-width: 800px;
     margin: 0 auto;
   }
   
-  /* Heading styles */
   h1, h2 {
-    color: #333;
+    color: #000000;
   }
   
-  /* List styles */
   ul {
     list-style: none;
     padding: 0;
   }
   
-  /* Medical History item styles */
   ul.medical-history-list li {
     margin-bottom: 10px;
   }
   
-  /* Upcoming Appointments item styles */
   ul.upcoming-appointments-list li {
     margin-bottom: 10px;
     display: flex;
@@ -30,7 +51,6 @@
     align-items: center;
   }
   
-  /* Available Appointments item styles */
   ul.available-appointments-list li {
     margin-bottom: 10px;
     display: flex;
@@ -38,7 +58,6 @@
     align-items: center;
   }
   
-  /* Button styles */
   button {
     background-color: #007bff;
     color: #fff;
@@ -46,9 +65,7 @@
     padding: 5px 10px;
     cursor: pointer;
   }
-  
-  /* Error message styles */
-  .error-message {
+    .error-message {
     color: #ff0000;
     margin-top: 10px;
   }

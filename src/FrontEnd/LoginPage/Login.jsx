@@ -1,35 +1,53 @@
-import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios for making HTTP requests
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "./Login";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const navigate = useNavigate(); // Get the navigate function from React Router
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      // Make a request to the sign-in API
-      const response = await axios.post('http://localhost/hospital/apis/adminSignin.php', {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost/hospital/apis/adminSignin.php",
+        {
+          username,
+          password,
+        }
+      );
 
       if (response.data.success) {
-        // Authentication successful, navigate to the admin page
-        navigate('/admin');
+        // Authentication successful, determine user role and navigate accordingly
+        const userRole = response.data.role;
+
+        switch (userRole) {
+          case "Admin":
+            // Redirect admin to admin page
+            navigate("/admin");
+            break;
+          case "Doctor":
+            // Redirect doctor to their page using their ID
+            navigate(`/doctor/${response.data.doctor_id}`);
+            break;
+          case "Patient":
+            // Redirect patient to their page using their ID
+            navigate(`/patient/${response.data.patient_id}`);
+            break;
+          default:
+            // Unknown role, handle as needed
+            break;
+        }
       } else {
-        // Authentication failed,show an error message)
-        setErrorMessage('Wrong username or password');
+        // Authentication failed, show an error message
+        setErrorMessage("Wrong username or password");
       }
     } catch (error) {
-      // Handle any error that occurs during the API request
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
     }
   };
-
 
   return (
     <div>
@@ -57,9 +75,9 @@ const Login = () => {
           </label>
           <br />
           <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            Login
+          </button>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </form>
       </main>
       <footer>

@@ -6,7 +6,7 @@ import Admin from '../src/FrontEnd/Admin/Admin';
 import DoctorDashboard from '../src/FrontEnd/Doctors/Doctors';
 import PatientDashboard from '../src/FrontEnd/Patients/Patients';
 import Login from '../src/FrontEnd/LoginPage/Login';
-import './index.css';
+import './App.css';
 
 const App = () => {
   return (

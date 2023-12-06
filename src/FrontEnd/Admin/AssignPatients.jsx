@@ -32,9 +32,7 @@ const AssignPatients = () => {
   };
 
   const handleRoomAssign = (roomId) => {
-    // Implement logic to assign the selected patient to the room
-    // Send a request to the API to update the patient's assigned room
-    // Reload the available rooms data
+    
   };
 
   return (
@@ -54,7 +52,6 @@ const AssignPatients = () => {
       <div>
         <h3>Select Patient</h3>
         <ul>
-          {/* Display a list of patients */}
           {Array.isArray(patients) && patients.map(patient => (
             <li key={patient.id}>
               {patient.name}
